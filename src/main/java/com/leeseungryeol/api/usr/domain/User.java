@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long usr_num;
+    private long usrNum;
     private String role;
     private String provider;
     private String providerId;

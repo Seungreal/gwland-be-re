@@ -34,7 +34,8 @@ public class Review {
     private Place place;
 
     @Builder
-    public Review(String revName, String revStar, String revContent, String revDate, User user, Place place) {
+    public Review(long revNum,String revName, String revStar, String revContent, String revDate, User user, Place place) {
+        this.revNum = revNum;
         this.revName = revName;
         this.revStar = revStar;
         this.revContent = revContent;
