@@ -20,8 +20,6 @@ public class UserController {
 
     @GetMapping("/profile")
     public User profile(@CurrentUser UserPrincipal userPrincipal){
-        System.out.println("id:"+userPrincipal.getId());
-        System.out.println("email:"+userPrincipal.getEmail());
         return userRepository.findById(userPrincipal.getId()).orElse(null);
     }
 }
