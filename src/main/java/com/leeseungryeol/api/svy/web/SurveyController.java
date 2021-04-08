@@ -2,6 +2,7 @@ package com.leeseungryeol.api.svy.web;
 
 import com.leeseungryeol.api.svy.service.SurveyService;
 import com.leeseungryeol.api.svy.web.dto.SurveyDto;
+import com.leeseungryeol.api.svy.web.dto.SurveyResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,8 +18,8 @@ public class SurveyController {
     private final SurveyService surveyService;
 
     @PostMapping("/save")
-    public ResponseEntity<Integer> save(@RequestBody SurveyDto s){
-        return ResponseEntity.ok(surveyService.save(s));
+    public ResponseEntity<List<List<SurveyResponseDto>>> save(@RequestBody SurveyDto s){
+        return ResponseEntity.ok(surveyService.saveAndRecom(s));
     }
     @GetMapping("/count")
     public ResponseEntity<Long> count(){

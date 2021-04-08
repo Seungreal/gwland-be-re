@@ -33,4 +33,10 @@ public class ReviewController {
     public ResponseEntity<List<ReviewDto>> findAll(){
         return ResponseEntity.ok((reviewService.findAll()));
     }
+
+    @GetMapping("/list/{contentid}")
+    public ResponseEntity<List<ReviewDto>> listByContentId(@PathVariable Long contentid)
+    {
+        return ResponseEntity.ok(reviewService.listByContentid(contentid));
+    }
 }

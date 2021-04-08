@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 @Service
@@ -19,7 +20,19 @@ public class PlaceService {
     }
 
     public int saveAll(List<PlaceDto> ls) {
-        return placeRepository.saveAll(ls.stream().map(p->p.toEntity()).collect(Collectors.toList()))!=null?1:0;
+        Stream<PlaceDto> stream = ls.stream();
+        stream.forEach(placeDto -> {
+            switch (placeDto.getSigungucode()){
+                case "5":
+                    placeDto.setSigungucode("속초");
+                    break;
+                default:
+                    placeDto.setSigungucode("강원도");
+            }
+        });
+        return placeRepository.saveAll(stream
+                .map(p->p.toEntity())
+                .collect(Collectors.toList()))!=null?1:0;
     }
 
     @Transactional

@@ -1,5 +1,6 @@
 package com.leeseungryeol.api.usr.domain;
 
+import com.leeseungryeol.api.crs.domain.Course;
 import com.leeseungryeol.api.rev.domain.Review;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,7 +26,9 @@ public class User {
     private List<Role> roles;
 
     @OneToMany(mappedBy = "user")
-    private List<Review> review = new ArrayList<>();
+    private List<Review> reviewList = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<Course> courseList = new ArrayList<>();
 
     @Builder
     public User(String provider, String providerId, String username, String email, String age, String gender, List<Role> roles) {

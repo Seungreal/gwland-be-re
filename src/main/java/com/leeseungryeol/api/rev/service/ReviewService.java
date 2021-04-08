@@ -1,5 +1,6 @@
 package com.leeseungryeol.api.rev.service;
 
+import com.leeseungryeol.api.pce.domain.PlaceRepository;
 import com.leeseungryeol.api.rev.domain.ReviewRepository;
 import com.leeseungryeol.api.rev.web.dto.ReviewDto;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class ReviewService {
     private final ReviewRepository reviewRepository;
+    private final PlaceRepository placeRepository;
 
     public int save(ReviewDto r){
         return reviewRepository.save(r.toEntity())!=null?1:0;
@@ -28,5 +30,9 @@ public class ReviewService {
 
     public List<ReviewDto> findAll(){
         return reviewRepository.findAll().stream().map(r->new ReviewDto(r)).collect(Collectors.toList());
+    }
+
+    public List<ReviewDto> listByContentid(long contentid){
+        return reviewRepository.findByPlace(placeRepository.getOne(contentid)).stream().map(r->new ReviewDto(r)).collect(Collectors.toList());
     }
 }

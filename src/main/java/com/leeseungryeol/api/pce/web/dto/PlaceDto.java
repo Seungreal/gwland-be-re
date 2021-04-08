@@ -4,8 +4,9 @@ import com.leeseungryeol.api.pce.domain.Place;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Getter
+@Getter @Setter
 @NoArgsConstructor
 public class PlaceDto {
     private long contentid;

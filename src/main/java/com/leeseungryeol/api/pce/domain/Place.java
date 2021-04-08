@@ -1,5 +1,6 @@
 package com.leeseungryeol.api.pce.domain;
 
+import com.leeseungryeol.api.rcm.domain.Recom;
 import com.leeseungryeol.api.rev.domain.Review;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,10 +38,12 @@ public class Place {
     @Column(name="tel") private String tel;
     @Column(name="title") private String title;
     @Column(name="zipcode") private String zipcode;
-    @Column(name="overview") private String overview;
+    @Column(name="overview", columnDefinition="text") private String overview;
 
     @OneToMany(mappedBy = "place")
     private List<Review> reviewList = new ArrayList<>();
+    @OneToMany(mappedBy = "place")
+    private List<Recom> recomList = new ArrayList<>();
 
     @Builder
     public Place(long contentid, String addr1, String addr2, String areacode, String cat1, String cat2, String cat3, String contenttypeid, String createdtime, String firstimage, String firstimage2, String mapx, String mapy, String mlevel, String modifiedtime, String readcount, String sigungucode, String tel, String title, String zipcode, String overview) {
