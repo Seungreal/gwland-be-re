@@ -29,6 +29,10 @@ public class SurveyController {
     public ResponseEntity<Page<SurveyDto>> list(Pageable pageable){
         return ResponseEntity.ok(surveyService.list(pageable));
     }
+    @GetMapping("/detail/{svyNum}")
+    public ResponseEntity<SurveyDto> detail(@PathVariable long svyNum){
+        return ResponseEntity.ok(surveyService.detail(svyNum));
+    }
     @DeleteMapping("/delete")
     public ResponseEntity<Integer> delete(@RequestBody SurveyDto s){
         return ResponseEntity.ok(surveyService.delete(s));
