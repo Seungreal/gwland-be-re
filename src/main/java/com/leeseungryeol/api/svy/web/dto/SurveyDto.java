@@ -19,6 +19,19 @@ public class SurveyDto {
     private String theme2;
     private String theme3;
 
+    public SurveyDto(Survey survey){
+        this.svyNum = survey.getSvyNum();
+        this.gender = survey.getGender();
+        this.age = survey.getAge();
+        this.season = survey.getSeason();
+        this.partner = survey.getPartner();
+        this.duration = survey.getDuration();
+        this.location = survey.getLocation();
+        this.theme1 = survey.getTheme1();
+        this.theme2 = survey.getTheme2();
+        this.theme3 = survey.getTheme3();
+    }
+
     @Builder
     public SurveyDto(long svyNum,String gender, String age, String season, String partner, String duration, String location, String theme1, String theme2, String theme3) {
         this.svyNum = svyNum;

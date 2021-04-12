@@ -183,6 +183,10 @@ public class SurveyService {
         return surveyRepository.count();
     }
 
+    public SurveyDto detail(long svyNum){
+        return new SurveyDto(surveyRepository.getOne(svyNum));
+    }
+
     public int delete(SurveyDto s){
         surveyRepository.delete(s.toEntity());
         return surveyRepository.existsById(s.getSvyNum())?0:1;
