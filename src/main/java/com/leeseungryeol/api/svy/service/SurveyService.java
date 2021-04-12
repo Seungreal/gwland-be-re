@@ -80,8 +80,12 @@ public class SurveyService {
             if(duplPlace(course,places.get(i))){
                 temp = 0.0;
             }else {
-                temp = (scoresByTheme.get(i) + scoresByStar.get(i) / ratio * 20)/ LocationDistance.distance(
+                double distance = LocationDistance.distance(
                         Double.parseDouble(last.getMapy()),Double.parseDouble(places.get(i).getMapy()),Double.parseDouble(last.getMapx()),Double.parseDouble(places.get(i).getMapx()));
+                if(distance<1){
+                    distance=1.0;
+                }
+                temp = (scoresByTheme.get(i) + scoresByStar.get(i) / ratio * 20)/ distance;
             }
             scores.add(temp);
         }
